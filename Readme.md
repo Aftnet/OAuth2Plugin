@@ -1,4 +1,5 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/yhhaem05r4l0kdqv?svg=true)](https://ci.appveyor.com/project/Aftnet/oauth2plugin)
+[![NuGet version](https://badge.fury.io/nu/Xam.Plugin.OAuth2.svg)](https://badge.fury.io/nu/Xam.Plugin.OAuth2)
 
 # OpenID Connect Broker
 
