@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.4</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Plugin.OAuth2.Common\Plugin.OAuth2.Common.csproj" />
+  </ItemGroup>
+
+  <Import Project="..\Plugin.OAuth2.Shared\Plugin.OAuth2.Shared.projitems" Label="Shared" />
+
+</Project>
