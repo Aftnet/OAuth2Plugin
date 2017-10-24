@@ -1,3 +1,5 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/yhhaem05r4l0kdqv?svg=true)](https://ci.appveyor.com/project/Aftnet/oauth2plugin)
+
 # OpenID Connect Broker
 
 Encapsulates the logic needed to get Open ID Connect tokens from colpliant identity providers.
