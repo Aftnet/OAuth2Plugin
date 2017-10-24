@@ -1,4 +1,4 @@
-#OpenID Connect Broker
+# OpenID Connect Broker
 
 Encapsulates the logic needed to get Open ID Connect tokens from colpliant identity providers.
 In particular, it provides functinality for:
@@ -7,20 +7,14 @@ In particular, it provides functinality for:
 - Saving refresh tokens using the system's secure password store
 - Getting tokens and renewing them when their valdity exires
 
-##Installation
+## Installation
 
-###Universal apps
-
-```
-Install-Package AppStorageService.Universal
-```
-
-###Classic desktop applications
+From the Nuget comand line:
 
 ```
-Install-Package AppStorageService.Desktop
+Install-Package Xam.Plugin.OAuth2
 ```
 
-##Usage
+## Usage
 
 Coming soon
