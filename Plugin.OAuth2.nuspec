@@ -2,12 +2,12 @@
 <package >
   <metadata minClientVersion="3.0.0">
     <id>Xam.Plugin.OAuth2</id>
-    <version>0.1.0</version>
+    <version>$version$</version>
     <authors>Alberto Fustinoni</authors>
     <owners>Alberto Fustinoni</owners>
     <licenseUrl>https://raw.githubusercontent.com/Aftnet/OIDCBroker/master/License.txt</licenseUrl>
     <projectUrl>https://github.com/Aftnet/OIDCBroker</projectUrl>
-    <iconUrl>http://refractored.com/images/plugin_permissions.png</iconUrl>
+    <iconUrl>https://github.com/Aftnet/OAuth2Plugin/raw/master/Icon.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Handles OAuth2 code flow to get authorization tokens from OpenID Connect providers, spawning a web browser for interactive authentication as needed.</description>
     <copyright>Copyright 2017</copyright>
@@ -42,10 +42,10 @@
   </metadata>
   <files>
     <!--Core-->
-    <file src="Plugin.OAuth2\bin\Release\netstandard1.4\Plugin.OAuth2.*" target="lib\netstandard1.4" />
+    <file src="Plugin.OAuth2\bin\$configuration$\netstandard1.4\Plugin.OAuth2.*" target="lib\netstandard1.4" />
     <!--UWP-->
-    <file src="Plugin.OAuth2.UWP\bin\Release\Plugin.OAuth2.*" target="lib\uap10.0" />
+    <file src="Plugin.OAuth2.UWP\bin\$configuration$\Plugin.OAuth2.*" target="lib\uap10.0" />
     <!--Desktop Windows-->
-    <file src="Plugin.OAuth2.Net46\bin\Release\Plugin.OAuth2.*" target="lib\net46" />
+    <file src="Plugin.OAuth2.Net46\bin\$configuration$\Plugin.OAuth2.*" target="lib\net46" />
   </files>
 </package>
