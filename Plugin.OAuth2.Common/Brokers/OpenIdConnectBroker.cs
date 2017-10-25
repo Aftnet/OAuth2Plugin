@@ -1,5 +1,6 @@
 ﻿using IdentityModel;
 using IdentityModel.Client;
+using Plugin.OAuth2.Common.Components;
 using System.Threading.Tasks;
 
 namespace Plugin.OAuth2.Common.Brokers
@@ -8,6 +9,8 @@ namespace Plugin.OAuth2.Common.Brokers
     {
         private readonly string Authority;
         private readonly DiscoveryCache Discovery;
+
+        private readonly JWTValidCache IDTokenCache = new JWTValidCache();
 
         public OpenIdConnectBroker(string authority, string clientId, string clientSecret, string scope, IAuthorizationUriAcquirer authUriAcquirer) :
             this(authority, clientId, clientSecret, scope, authUriAcquirer, null)
@@ -82,8 +85,20 @@ namespace Plugin.OAuth2.Common.Brokers
 
         public async Task<string> GetIDTokenAsync()
         {
+            var token = IDTokenCache.Value;
+            if (!string.IsNullOrEmpty(token))
+            {
+                return token;
+            }
+
             var response = await GetTokenResponseAsync();
-            return response?.IdentityToken;
+            token = response?.IdentityToken;
+            if (!string.IsNullOrEmpty(token))
+            {
+                IDTokenCache.Update(token);
+            }
+
+            return token;
         }
 
         private async Task<TokenResponse> GetTokenResponseAsync()

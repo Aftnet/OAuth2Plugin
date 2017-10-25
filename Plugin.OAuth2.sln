@@ -20,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.OAuth2.UWP", "Plugin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.OAuth2", "Plugin.OAuth2\Plugin.OAuth2.csproj", "{C4D264AD-AFDB-49D7-AD69-C8221AF69B94}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.OAuth2.Common.Test", "Plugin.OAuth2.Common.Test\Plugin.OAuth2.Common.Test.csproj", "{1AD38B2C-D296-4345-8BCE-B44F42AFF5C1}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Plugin.OAuth2.Shared\Plugin.OAuth2.Shared.projitems*{304b64f6-ff0e-4e1b-bee5-e51df3a4ebea}*SharedItemsImports = 4
@@ -137,6 +139,30 @@ Global
 		{C4D264AD-AFDB-49D7-AD69-C8221AF69B94}.Release|x64.Build.0 = Release|Any CPU
 		{C4D264AD-AFDB-49D7-AD69-C8221AF69B94}.Release|x86.ActiveCfg = Release|Any CPU
 		{C4D264AD-AFDB-49D7-AD69-C8221AF69B94}.Release|x86.Build.0 = Release|Any CPU
+		{1AD38B2C-D296-4345-8BCE-B44F42AFF5C1}.AppStore|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AD38B2C-D296-4345-8BCE-B44F42AFF5C1}.AppStore|Any CPU.Build.0 = Debug|Any CPU
+		{1AD38B2C-D296-4345-8BCE-B44F42AFF5C1}.AppStore|ARM.ActiveCfg = Debug|Any CPU
+		{1AD38B2C-D296-4345-8BCE-B44F42AFF5C1}.AppStore|ARM.Build.0 = Debug|Any CPU
+		{1AD38B2C-D296-4345-8BCE-B44F42AFF5C1}.AppStore|x64.ActiveCfg = Debug|Any CPU
+		{1AD38B2C-D296-4345-8BCE-B44F42AFF5C1}.AppStore|x64.Build.0 = Debug|Any CPU
+		{1AD38B2C-D296-4345-8BCE-B44F42AFF5C1}.AppStore|x86.ActiveCfg = Debug|Any CPU
+		{1AD38B2C-D296-4345-8BCE-B44F42AFF5C1}.AppStore|x86.Build.0 = Debug|Any CPU
+		{1AD38B2C-D296-4345-8BCE-B44F42AFF5C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AD38B2C-D296-4345-8BCE-B44F42AFF5C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AD38B2C-D296-4345-8BCE-B44F42AFF5C1}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{1AD38B2C-D296-4345-8BCE-B44F42AFF5C1}.Debug|ARM.Build.0 = Debug|Any CPU
+		{1AD38B2C-D296-4345-8BCE-B44F42AFF5C1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1AD38B2C-D296-4345-8BCE-B44F42AFF5C1}.Debug|x64.Build.0 = Debug|Any CPU
+		{1AD38B2C-D296-4345-8BCE-B44F42AFF5C1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1AD38B2C-D296-4345-8BCE-B44F42AFF5C1}.Debug|x86.Build.0 = Debug|Any CPU
+		{1AD38B2C-D296-4345-8BCE-B44F42AFF5C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AD38B2C-D296-4345-8BCE-B44F42AFF5C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AD38B2C-D296-4345-8BCE-B44F42AFF5C1}.Release|ARM.ActiveCfg = Release|Any CPU
+		{1AD38B2C-D296-4345-8BCE-B44F42AFF5C1}.Release|ARM.Build.0 = Release|Any CPU
+		{1AD38B2C-D296-4345-8BCE-B44F42AFF5C1}.Release|x64.ActiveCfg = Release|Any CPU
+		{1AD38B2C-D296-4345-8BCE-B44F42AFF5C1}.Release|x64.Build.0 = Release|Any CPU
+		{1AD38B2C-D296-4345-8BCE-B44F42AFF5C1}.Release|x86.ActiveCfg = Release|Any CPU
+		{1AD38B2C-D296-4345-8BCE-B44F42AFF5C1}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
