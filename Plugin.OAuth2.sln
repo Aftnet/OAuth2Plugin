@@ -24,9 +24,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.OAuth2.Common.Test",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.OAuth2.iOS", "Plugin.OAuth2.iOS\Plugin.OAuth2.iOS.csproj", "{EEF40825-DA7E-4768-8296-060616A839C2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.OAuth2.Android", "Plugin.OAuth2.Android\Plugin.OAuth2.Android.csproj", "{8A7B3A62-E143-437D-98AC-D30FA44707A1}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Plugin.OAuth2.Shared\Plugin.OAuth2.Shared.projitems*{304b64f6-ff0e-4e1b-bee5-e51df3a4ebea}*SharedItemsImports = 4
+		Plugin.OAuth2.Shared\Plugin.OAuth2.Shared.projitems*{8a7b3a62-e143-437d-98ac-d30fa44707a1}*SharedItemsImports = 4
 		Plugin.OAuth2.Shared\Plugin.OAuth2.Shared.projitems*{d0f0bc83-a077-4f16-970f-c4d642e642c3}*SharedItemsImports = 13
 		Plugin.OAuth2.Shared\Plugin.OAuth2.Shared.projitems*{d1ee9925-54d9-4943-803d-e5c46430c7f9}*SharedItemsImports = 4
 		Plugin.OAuth2.Shared\Plugin.OAuth2.Shared.projitems*{eef40825-da7e-4768-8296-060616a839c2}*SharedItemsImports = 4
@@ -190,6 +193,30 @@ Global
 		{EEF40825-DA7E-4768-8296-060616A839C2}.Release|x64.Build.0 = Release|Any CPU
 		{EEF40825-DA7E-4768-8296-060616A839C2}.Release|x86.ActiveCfg = Release|Any CPU
 		{EEF40825-DA7E-4768-8296-060616A839C2}.Release|x86.Build.0 = Release|Any CPU
+		{8A7B3A62-E143-437D-98AC-D30FA44707A1}.AppStore|Any CPU.ActiveCfg = Release|Any CPU
+		{8A7B3A62-E143-437D-98AC-D30FA44707A1}.AppStore|Any CPU.Build.0 = Release|Any CPU
+		{8A7B3A62-E143-437D-98AC-D30FA44707A1}.AppStore|ARM.ActiveCfg = Release|Any CPU
+		{8A7B3A62-E143-437D-98AC-D30FA44707A1}.AppStore|ARM.Build.0 = Release|Any CPU
+		{8A7B3A62-E143-437D-98AC-D30FA44707A1}.AppStore|x64.ActiveCfg = Release|Any CPU
+		{8A7B3A62-E143-437D-98AC-D30FA44707A1}.AppStore|x64.Build.0 = Release|Any CPU
+		{8A7B3A62-E143-437D-98AC-D30FA44707A1}.AppStore|x86.ActiveCfg = Release|Any CPU
+		{8A7B3A62-E143-437D-98AC-D30FA44707A1}.AppStore|x86.Build.0 = Release|Any CPU
+		{8A7B3A62-E143-437D-98AC-D30FA44707A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A7B3A62-E143-437D-98AC-D30FA44707A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A7B3A62-E143-437D-98AC-D30FA44707A1}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{8A7B3A62-E143-437D-98AC-D30FA44707A1}.Debug|ARM.Build.0 = Debug|Any CPU
+		{8A7B3A62-E143-437D-98AC-D30FA44707A1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8A7B3A62-E143-437D-98AC-D30FA44707A1}.Debug|x64.Build.0 = Debug|Any CPU
+		{8A7B3A62-E143-437D-98AC-D30FA44707A1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8A7B3A62-E143-437D-98AC-D30FA44707A1}.Debug|x86.Build.0 = Debug|Any CPU
+		{8A7B3A62-E143-437D-98AC-D30FA44707A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A7B3A62-E143-437D-98AC-D30FA44707A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A7B3A62-E143-437D-98AC-D30FA44707A1}.Release|ARM.ActiveCfg = Release|Any CPU
+		{8A7B3A62-E143-437D-98AC-D30FA44707A1}.Release|ARM.Build.0 = Release|Any CPU
+		{8A7B3A62-E143-437D-98AC-D30FA44707A1}.Release|x64.ActiveCfg = Release|Any CPU
+		{8A7B3A62-E143-437D-98AC-D30FA44707A1}.Release|x64.Build.0 = Release|Any CPU
+		{8A7B3A62-E143-437D-98AC-D30FA44707A1}.Release|x86.ActiveCfg = Release|Any CPU
+		{8A7B3A62-E143-437D-98AC-D30FA44707A1}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

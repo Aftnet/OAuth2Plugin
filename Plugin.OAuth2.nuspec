@@ -26,6 +26,6 @@
     <!--Xamarin.iOS-->
     <file src="Plugin.OAuth2.iOS\bin\$configuration$\Plugin.OAuth2.*" target="lib\Xamarin.iOS10" />
     <!--Xamarin.Android-->
-    <!--<file src="Plugin.OAuth2.Android\bin\$configuration$\Plugin.OAuth2.*" target="lib\MonoAndroid10" />-->
+    <file src="Plugin.OAuth2.Android\bin\$configuration$\Plugin.OAuth2.*" target="lib\MonoAndroid10" />
   </files>
 </package>
