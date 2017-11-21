@@ -8,6 +8,7 @@ namespace Plugin.OAuth2.Components
     internal class AuthorizationUriAcquirer : IAuthorizationUriAcquirer
     {
         private TaskCompletionSource<string> TCS;
+        private SFAuthenticationSession Session;
 
         public Task<string> GetAuthorizationUriAsync(string authorizeUri, string redirectUriRoot)
         {
@@ -17,8 +18,12 @@ namespace Plugin.OAuth2.Components
             }
 
             var startUri = new NSUrl(authorizeUri);
-            var session = new SFAuthenticationSession(startUri, redirectUriRoot, AuthenticationSessionCompletionHandler);
-            session.Start();
+            Session = new SFAuthenticationSession(startUri, redirectUriRoot, AuthenticationSessionCompletionHandler);
+            if (!Session.Start())
+            {
+                Session = null;
+                return null;
+            }
 
             TCS = new TaskCompletionSource<string>();
             return TCS.Task;
@@ -34,6 +39,7 @@ namespace Plugin.OAuth2.Components
 
             TCS.SetResult(redirectUri.AbsoluteString);
             TCS = null;
+            Session = null;
         }
     }
 }
