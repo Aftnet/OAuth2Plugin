@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2005
+VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6A67EFA0-0E27-496D-9894-6DC5E59B4C2D}"
 	ProjectSection(SolutionItems) = preProject
@@ -25,6 +25,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.OAuth2.iOS", "Plugin.OAuth2.iOS\Plugin.OAuth2.iOS.csproj", "{EEF40825-DA7E-4768-8296-060616A839C2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.OAuth2.Android", "Plugin.OAuth2.Android\Plugin.OAuth2.Android.csproj", "{8A7B3A62-E143-437D-98AC-D30FA44707A1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestApps", "TestApps", "{C5764FD7-6761-42D3-B28C-293FC534A186}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp.Shared", "TestApps\TestApp.Shared\TestApp.Shared.csproj", "{81EEA812-C16E-4EC7-A0B5-DC5C53AC1569}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -217,9 +221,36 @@ Global
 		{8A7B3A62-E143-437D-98AC-D30FA44707A1}.Release|x64.Build.0 = Release|Any CPU
 		{8A7B3A62-E143-437D-98AC-D30FA44707A1}.Release|x86.ActiveCfg = Release|Any CPU
 		{8A7B3A62-E143-437D-98AC-D30FA44707A1}.Release|x86.Build.0 = Release|Any CPU
+		{81EEA812-C16E-4EC7-A0B5-DC5C53AC1569}.AppStore|Any CPU.ActiveCfg = Debug|Any CPU
+		{81EEA812-C16E-4EC7-A0B5-DC5C53AC1569}.AppStore|Any CPU.Build.0 = Debug|Any CPU
+		{81EEA812-C16E-4EC7-A0B5-DC5C53AC1569}.AppStore|ARM.ActiveCfg = Debug|Any CPU
+		{81EEA812-C16E-4EC7-A0B5-DC5C53AC1569}.AppStore|ARM.Build.0 = Debug|Any CPU
+		{81EEA812-C16E-4EC7-A0B5-DC5C53AC1569}.AppStore|x64.ActiveCfg = Debug|Any CPU
+		{81EEA812-C16E-4EC7-A0B5-DC5C53AC1569}.AppStore|x64.Build.0 = Debug|Any CPU
+		{81EEA812-C16E-4EC7-A0B5-DC5C53AC1569}.AppStore|x86.ActiveCfg = Debug|Any CPU
+		{81EEA812-C16E-4EC7-A0B5-DC5C53AC1569}.AppStore|x86.Build.0 = Debug|Any CPU
+		{81EEA812-C16E-4EC7-A0B5-DC5C53AC1569}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81EEA812-C16E-4EC7-A0B5-DC5C53AC1569}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81EEA812-C16E-4EC7-A0B5-DC5C53AC1569}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{81EEA812-C16E-4EC7-A0B5-DC5C53AC1569}.Debug|ARM.Build.0 = Debug|Any CPU
+		{81EEA812-C16E-4EC7-A0B5-DC5C53AC1569}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{81EEA812-C16E-4EC7-A0B5-DC5C53AC1569}.Debug|x64.Build.0 = Debug|Any CPU
+		{81EEA812-C16E-4EC7-A0B5-DC5C53AC1569}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{81EEA812-C16E-4EC7-A0B5-DC5C53AC1569}.Debug|x86.Build.0 = Debug|Any CPU
+		{81EEA812-C16E-4EC7-A0B5-DC5C53AC1569}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81EEA812-C16E-4EC7-A0B5-DC5C53AC1569}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81EEA812-C16E-4EC7-A0B5-DC5C53AC1569}.Release|ARM.ActiveCfg = Release|Any CPU
+		{81EEA812-C16E-4EC7-A0B5-DC5C53AC1569}.Release|ARM.Build.0 = Release|Any CPU
+		{81EEA812-C16E-4EC7-A0B5-DC5C53AC1569}.Release|x64.ActiveCfg = Release|Any CPU
+		{81EEA812-C16E-4EC7-A0B5-DC5C53AC1569}.Release|x64.Build.0 = Release|Any CPU
+		{81EEA812-C16E-4EC7-A0B5-DC5C53AC1569}.Release|x86.ActiveCfg = Release|Any CPU
+		{81EEA812-C16E-4EC7-A0B5-DC5C53AC1569}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{81EEA812-C16E-4EC7-A0B5-DC5C53AC1569} = {C5764FD7-6761-42D3-B28C-293FC534A186}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {50099D25-C1F9-45CB-9646-5370CC9FDA7B}
