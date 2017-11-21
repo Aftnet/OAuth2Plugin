@@ -16,7 +16,7 @@ namespace Plugin.OAuth2.Components
                 return null;
             }
 
-            var startUri = new NSUrl(authorizeUri, false);
+            var startUri = new NSUrl(authorizeUri);
             var session = new SFAuthenticationSession(startUri, redirectUriRoot, AuthenticationSessionCompletionHandler);
             session.Start();
 
