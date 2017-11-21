@@ -6,7 +6,7 @@ namespace TestApp.Shared
 {
     public class Handler
     {
-        private readonly IOAuth2Broker Broker = CrossOAuth2.GetGithubBroker("", "", "");
+        private readonly IOAuth2Broker Broker = CrossOAuth2.GetGoogleAccountBroker("158105969996-qqevrl33qa6t011llqu50tt6k7je8bk8.apps.googleusercontent.com", "VF12gGXL_TsYjSLauMsTz3Ei", "openid email");
 
         public async Task<string> LogIn()
         {
