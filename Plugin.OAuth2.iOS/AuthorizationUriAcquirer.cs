@@ -2,44 +2,74 @@
 using Plugin.OAuth2.Common;
 using SafariServices;
 using System.Threading.Tasks;
+using WebKit;
+using UIKit;
+using System;
 
 namespace Plugin.OAuth2.Components
 {
     internal class AuthorizationUriAcquirer : IAuthorizationUriAcquirer
     {
-        private TaskCompletionSource<string> TCS;
-        private SFAuthenticationSession Session;
+        private string RedirectUriRoot { get; set; }
+        private TaskCompletionSource<string> CompletionSource { get; set; }
+        private UINavigationController ModalController { get; set; }
 
         public Task<string> GetAuthorizationUriAsync(string authorizeUri, string redirectUriRoot)
         {
-            if (TCS != null)
+            if (ModalController != null)
             {
-                return null;
+                return Task.FromResult(default(string));
             }
 
-            var startUri = new NSUrl(authorizeUri);
-            Session = new SFAuthenticationSession(startUri, redirectUriRoot, AuthenticationSessionCompletionHandler);
-            if (!Session.Start())
-            {
-                Session = null;
-                return null;
-            }
+            RedirectUriRoot = redirectUriRoot;
+            var webViewController = new WebViewController(authorizeUri);
+            webViewController.OnNavigating += NavigationHandler;
+            ModalController = new UINavigationController(webViewController);
+            webViewController.NavigationItem.LeftBarButtonItem = new UIBarButtonItem(UIBarButtonSystemItem.Cancel, CancelBtnHandler);
 
-            TCS = new TaskCompletionSource<string>();
-            return TCS.Task;
+            var currentController = GetCurrentViewController();
+            currentController.PresentViewControllerAsync(ModalController, true);
+
+            CompletionSource = new TaskCompletionSource<string>();
+            return CompletionSource.Task;
         }
 
-        private void AuthenticationSessionCompletionHandler(NSUrl redirectUri, NSError error)
+        private void CancelBtnHandler(object sender, System.EventArgs e)
         {
-            string output = null;
-            if (error == null)
+            var task = CloseModalControllerAndSetTCSResult(null);
+        }
+
+        void NavigationHandler(string Uri)
+        {
+            if (Uri.StartsWith(RedirectUriRoot, StringComparison.InvariantCulture))
             {
-                output = redirectUri.AbsoluteString;
+                var task = CloseModalControllerAndSetTCSResult(Uri);
+            }
+        }
+
+        private UIViewController GetCurrentViewController()
+        {
+            var window = UIApplication.SharedApplication.Delegate.GetWindow();
+            UIViewController output = window.RootViewController;
+
+            while (output.PresentedViewController != null)
+            {
+                output = output.PresentedViewController;
             }
 
-            TCS.SetResult(redirectUri.AbsoluteString);
-            TCS = null;
-            Session = null;
+            return output;
+        }
+
+        private async Task CloseModalControllerAndSetTCSResult(string result)
+        {
+            if (ModalController != null)
+            {
+                await ModalController.DismissViewControllerAsync(true);
+                ModalController = null;
+            }
+
+            CompletionSource?.SetResult(result);
+            CompletionSource = null;
         }
     }
 }
