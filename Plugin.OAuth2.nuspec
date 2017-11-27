@@ -13,7 +13,7 @@
     <copyright>Copyright 2017</copyright>
     <tags>OpenID-Connect OAuth2</tags>
     <dependencies>
-      <dependency id="IdentityModel" version="2.14.0" />
+      <dependency id="IdentityModel" version="2.16.0" />
     </dependencies>
   </metadata>
   <files>
@@ -23,5 +23,9 @@
     <file src="Plugin.OAuth2.UWP\bin\$configuration$\Plugin.OAuth2.*" target="lib\uap10" />
     <!--Desktop Windows-->
     <file src="Plugin.OAuth2.Net46\bin\$configuration$\Plugin.OAuth2.*" target="lib\net46" />
+    <!--Xamarin.iOS-->
+    <file src="Plugin.OAuth2.iOS\bin\$configuration$\Plugin.OAuth2.*" target="lib\Xamarin.iOS10" />
+    <!--Xamarin.Android-->
+    <file src="Plugin.OAuth2.Android\bin\$configuration$\Plugin.OAuth2.*" target="lib\MonoAndroid10" />
   </files>
 </package>
