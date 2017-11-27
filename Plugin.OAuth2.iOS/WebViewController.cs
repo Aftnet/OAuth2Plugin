@@ -4,9 +4,9 @@ using WebKit;
 using Foundation;
 using System;
 
-namespace Plugin.OAuth2
+namespace Plugin.OAuth2.Components
 {
-    public class WebViewController : UIViewController
+    internal class WebViewController : UIViewController
     {
         public delegate void OnNavigatingDelegate(string Uri);
 

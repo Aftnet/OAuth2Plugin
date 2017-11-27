@@ -1,10 +1,7 @@
-﻿using Foundation;
-using Plugin.OAuth2.Common;
-using SafariServices;
+﻿using System;
 using System.Threading.Tasks;
-using WebKit;
+using Plugin.OAuth2.Common;
 using UIKit;
-using System;
 
 namespace Plugin.OAuth2.Components
 {
