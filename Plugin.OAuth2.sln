@@ -36,7 +36,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp.Net46", "TestApps\T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp.iOS", "TestApps\TestApp.iOS\TestApp.iOS.csproj", "{6345A226-9F9D-4E87-BFBA-B878B4BF99AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp.Android", "TestApp.Android\TestApp.Android.csproj", "{5628C148-20D9-4CC7-B6AD-617B18DC4EE0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp.Android", "TestApps\TestApp.Android\TestApp.Android.csproj", "{5628C148-20D9-4CC7-B6AD-617B18DC4EE0}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
