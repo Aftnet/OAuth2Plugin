@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2009
+VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6A67EFA0-0E27-496D-9894-6DC5E59B4C2D}"
 	ProjectSection(SolutionItems) = preProject
@@ -41,7 +41,6 @@ EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Plugin.OAuth2.Shared\Plugin.OAuth2.Shared.projitems*{304b64f6-ff0e-4e1b-bee5-e51df3a4ebea}*SharedItemsImports = 4
-		Plugin.OAuth2.Shared\Plugin.OAuth2.Shared.projitems*{8a7b3a62-e143-437d-98ac-d30fa44707a1}*SharedItemsImports = 4
 		Plugin.OAuth2.Shared\Plugin.OAuth2.Shared.projitems*{d0f0bc83-a077-4f16-970f-c4d642e642c3}*SharedItemsImports = 13
 		Plugin.OAuth2.Shared\Plugin.OAuth2.Shared.projitems*{d1ee9925-54d9-4943-803d-e5c46430c7f9}*SharedItemsImports = 4
 		Plugin.OAuth2.Shared\Plugin.OAuth2.Shared.projitems*{eef40825-da7e-4768-8296-060616a839c2}*SharedItemsImports = 4
