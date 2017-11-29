@@ -25,7 +25,7 @@ namespace Plugin.OAuth2.Components
             return null;
         }
 
-        public static Activity GetCurrentActivity()
+        private static Activity GetCurrentActivity()
         {
             Activity activity = null;
             List<Object> objects = null;
