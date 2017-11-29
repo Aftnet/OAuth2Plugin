@@ -29,15 +29,12 @@ namespace Plugin.OAuth2.Components
 
         private WebView BrowserView { get; set; }
 
-        public WebViewActivity()
-        {
-            SetTheme(Android.Resource.Style.ThemeHoloDialogWhenLarge);
-        }
-
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            
+
+            SetTheme(Android.Resource.Style.ThemeDeviceDefaultDialogNoActionBar);
+
             BrowserView = new WebView(this);
             var client = new BrowserViewClient(d => OnNavigating?.Invoke(d));
             BrowserView.SetWebViewClient(client);
