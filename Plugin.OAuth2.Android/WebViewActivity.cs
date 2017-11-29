@@ -3,7 +3,7 @@ using Android.Graphics;
 using Android.OS;
 using Android.Webkit;
 
-namespace Plugin.OAuth2
+namespace Plugin.OAuth2.Components
 {
     [Activity(Label = "WebViewActivity")]
     internal class WebViewActivity : Activity
@@ -27,19 +27,10 @@ namespace Plugin.OAuth2
 
         public event OnNavigatingDelegate OnNavigating;
 
-        private readonly string StartUri;
-
         private WebView BrowserView { get; set; }
 
-        public WebViewActivity() : this(string.Empty)
+        public WebViewActivity()
         {
-
-        }
-
-        public WebViewActivity(string startUri)
-        {
-            StartUri = startUri;
-
             SetTheme(Android.Resource.Style.ThemeHoloDialogWhenLarge);
         }
 
@@ -52,7 +43,8 @@ namespace Plugin.OAuth2
             BrowserView.SetWebViewClient(client);
             SetContentView(BrowserView);
 
-            BrowserView.LoadUrl(StartUri);
+            var startUri = Intent.GetStringExtra(AuthorizationUriAcquirer.IntentStartUriKey);
+            BrowserView.LoadUrl(startUri);
         }
     }
 }
