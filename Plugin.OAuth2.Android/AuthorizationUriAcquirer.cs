@@ -12,70 +12,60 @@ using System.Threading.Tasks;
 
 namespace Plugin.OAuth2.Components
 {
-    public class AuthorizationUriAcquirer : IAuthorizationUriAcquirer
+    internal class AuthorizationUriAcquirer : AuthorizationUriAcquirerBase
     {
         public const string IntentStartUriKey = nameof(IntentStartUriKey);
-
-        private TaskCompletionSource<string> CompletionSource { get; set; }
 
         private WebViewActivity WebView { get; set; }
 
         private System.Threading.Timer WebViewAcquisitionTimer { get; set; }
 
-        public Task<string> GetAuthorizationUriAsync(string authorizeUri, string redirectUriRoot)
+        protected override Task ShowModalBrowserUI()
         {
-            if (CompletionSource != null)
+            var context = GetCurrentActivity();
+            if (context is WebViewActivity)
             {
-                return Task.FromResult(default(string));
+                return Task.CompletedTask;
             }
 
-            CompletionSource = new TaskCompletionSource<string>();
-
-            var context = GetCurrentActivity();
             var intent = new Intent(context, typeof(WebViewActivity));
-            intent.PutExtra(IntentStartUriKey, authorizeUri);
+            intent.PutExtra(IntentStartUriKey, AuthorizeUri);
             context.StartActivity(intent);
 
-            var timerPeriod = TimeSpan.FromMilliseconds(500);
+            var timerPeriod = TimeSpan.FromMilliseconds(1000);
             WebViewAcquisitionTimer = new System.Threading.Timer(WebViewAcquisitionTimerCallback, null, timerPeriod, timerPeriod);
 
-            return CompletionSource.Task;
+            return Task.CompletedTask;
+        }
+
+        protected override Task CloseModalBrowserUI()
+        {
+            WebView = GetCurrentActivity() as WebViewActivity;
+            WebView?.Finish();
+            WebView = null;
+
+            WebViewAcquisitionTimer?.Dispose();
+            WebViewAcquisitionTimer = null;
+
+            return Task.CompletedTask;
         }
         
         private void WebViewAcquisitionTimerCallback(object state)
         {
-            var webViewInstance = GetCurrentActivity() as WebViewActivity;
-            if (WebView != webViewInstance)
+            var webView = GetCurrentActivity() as WebViewActivity;
+            if (WebView == webView)
             {
-                
-            }
-        }
-
-        private void CancelBtnHandler(object sender, System.EventArgs e)
-        {
-            var task = CloseModalControllerAndSetTCSResult(null);
-        }
-
-        void NavigationHandler(string Uri)
-        {
-            if (Uri.StartsWith(RedirectUriRoot, StringComparison.InvariantCulture))
-            {
-                var task = CloseModalControllerAndSetTCSResult(Uri);
-            }
-        }
-
-        private async Task CloseModalControllerAndSetTCSResult(string result)
-        {
-            if (ModalController != null)
-            {
-                await ModalController.DismissViewControllerAsync(true);
-                ModalController = null;
+                return;
             }
 
-            CompletionSource?.SetResult(result);
-            CompletionSource = null;
+            WebView = webView;
+            if (WebView != null)
+            {
+                WebView.OnNavigating += NavigationHandler;
+                WebView.OnCanceling += CancellationHandler;
+            }
         }
-
+        
         private static Activity GetCurrentActivity()
         {
             Activity activity = null;
@@ -124,6 +114,5 @@ namespace Plugin.OAuth2.Components
 
             return activity;
         }
-
     }
 }

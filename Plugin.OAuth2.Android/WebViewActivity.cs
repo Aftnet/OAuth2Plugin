@@ -12,6 +12,8 @@ namespace Plugin.OAuth2.Components
 
         public delegate void OnNavigatingDelegate(string Uri);
 
+        public delegate void OnCancelingDelegate();
+
         private class BrowserViewClient : WebViewClient
         {
             private readonly OnNavigatingDelegate OnNavigating;
@@ -28,6 +30,7 @@ namespace Plugin.OAuth2.Components
         };
 
         public event OnNavigatingDelegate OnNavigating;
+        public event OnCancelingDelegate OnCanceling;
 
         private WebView BrowserView { get; set; }
 
@@ -40,11 +43,19 @@ namespace Plugin.OAuth2.Components
             BrowserView = new WebView(this);
             var client = new BrowserViewClient(d => OnNavigating?.Invoke(d));
             BrowserView.Settings.UserAgentString = UserAgentString;
+            BrowserView.Settings.JavaScriptEnabled = true;
             BrowserView.SetWebViewClient(client);
             SetContentView(BrowserView);
 
             var startUri = Intent.GetStringExtra(AuthorizationUriAcquirer.IntentStartUriKey);
             BrowserView.LoadUrl(startUri);
+        }
+
+        protected override void OnStop()
+        {
+            OnCanceling?.Invoke();
+
+            base.OnStop();
         }
     }
 }
