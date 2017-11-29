@@ -16,7 +16,7 @@ namespace Plugin.OAuth2.Components
     {
         public const string IntentStartUriKey = nameof(IntentStartUriKey);
 
-        private WebViewActivity WebView { get; set; }
+        private WebViewActivity ModalActivity { get; set; }
 
         private System.Threading.Timer WebViewAcquisitionTimer { get; set; }
 
@@ -40,9 +40,9 @@ namespace Plugin.OAuth2.Components
 
         protected override Task CloseModalBrowserUI()
         {
-            WebView = GetCurrentActivity() as WebViewActivity;
-            WebView?.Finish();
-            WebView = null;
+            ModalActivity = GetCurrentActivity() as WebViewActivity;
+            ModalActivity?.Finish();
+            ModalActivity = null;
 
             WebViewAcquisitionTimer?.Dispose();
             WebViewAcquisitionTimer = null;
@@ -53,16 +53,16 @@ namespace Plugin.OAuth2.Components
         private void WebViewAcquisitionTimerCallback(object state)
         {
             var webView = GetCurrentActivity() as WebViewActivity;
-            if (WebView == webView)
+            if (ModalActivity == webView)
             {
                 return;
             }
 
-            WebView = webView;
-            if (WebView != null)
+            ModalActivity = webView;
+            if (ModalActivity != null)
             {
-                WebView.OnNavigating += NavigationHandler;
-                WebView.OnCanceling += CancellationHandler;
+                ModalActivity.OnNavigating += NavigationHandler;
+                ModalActivity.OnCanceling += CancellationHandler;
             }
         }
         
