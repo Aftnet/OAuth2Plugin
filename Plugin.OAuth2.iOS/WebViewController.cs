@@ -40,8 +40,6 @@ namespace Plugin.OAuth2.Components
         {
             StartUri = startUri;
             WebViewDelegate = new NavDelegate(d => OnNavigating?.Invoke(d));
-
-            ModalPresentationStyle = UIModalPresentationStyle.Popover;
         }
 
         public override void LoadView()

@@ -12,8 +12,12 @@ namespace Plugin.OAuth2.Components
         {
             var webViewController = new WebViewController(AuthorizeUri);
             webViewController.OnNavigating += NavigationHandler;
-            ModalController = new UINavigationController(webViewController);
             webViewController.NavigationItem.LeftBarButtonItem = new UIBarButtonItem(UIBarButtonSystemItem.Cancel, (d, e) => CancellationHandler());
+
+            ModalController = new UINavigationController(webViewController)
+            {
+                ModalPresentationStyle = UIModalPresentationStyle.FormSheet
+            };
 
             var currentController = GetCurrentViewController();
             return currentController.PresentViewControllerAsync(ModalController, true);
