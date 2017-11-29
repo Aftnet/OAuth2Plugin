@@ -5,6 +5,7 @@ using Android.Util;
 using Java.Lang;
 using Java.Util;
 using Plugin.OAuth2.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,6 +18,10 @@ namespace Plugin.OAuth2.Components
 
         private TaskCompletionSource<string> CompletionSource { get; set; }
 
+        private WebViewActivity WebView { get; set; }
+
+        private System.Threading.Timer WebViewAcquisitionTimer { get; set; }
+
         public Task<string> GetAuthorizationUriAsync(string authorizeUri, string redirectUriRoot)
         {
             if (CompletionSource != null)
@@ -24,19 +29,57 @@ namespace Plugin.OAuth2.Components
                 return Task.FromResult(default(string));
             }
 
+            CompletionSource = new TaskCompletionSource<string>();
+
             var context = GetCurrentActivity();
             var intent = new Intent(context, typeof(WebViewActivity));
             intent.PutExtra(IntentStartUriKey, authorizeUri);
             context.StartActivity(intent);
-            
-            CompletionSource = new TaskCompletionSource<string>();
+
+            var timerPeriod = TimeSpan.FromMilliseconds(500);
+            WebViewAcquisitionTimer = new System.Threading.Timer(WebViewAcquisitionTimerCallback, null, timerPeriod, timerPeriod);
+
             return CompletionSource.Task;
+        }
+        
+        private void WebViewAcquisitionTimerCallback(object state)
+        {
+            var webViewInstance = GetCurrentActivity() as WebViewActivity;
+            if (WebView != webViewInstance)
+            {
+                
+            }
+        }
+
+        private void CancelBtnHandler(object sender, System.EventArgs e)
+        {
+            var task = CloseModalControllerAndSetTCSResult(null);
+        }
+
+        void NavigationHandler(string Uri)
+        {
+            if (Uri.StartsWith(RedirectUriRoot, StringComparison.InvariantCulture))
+            {
+                var task = CloseModalControllerAndSetTCSResult(Uri);
+            }
+        }
+
+        private async Task CloseModalControllerAndSetTCSResult(string result)
+        {
+            if (ModalController != null)
+            {
+                await ModalController.DismissViewControllerAsync(true);
+                ModalController = null;
+            }
+
+            CompletionSource?.SetResult(result);
+            CompletionSource = null;
         }
 
         private static Activity GetCurrentActivity()
         {
             Activity activity = null;
-            List<Object> objects = null;
+            List<Java.Lang.Object> objects = null;
 
             var activityThreadClass = Class.ForName("android.app.ActivityThread");
             var activityThread = activityThreadClass.GetMethod("currentActivityThread").Invoke(null);
@@ -48,17 +91,17 @@ namespace Plugin.OAuth2.Components
             if (obj is JavaDictionary)
             {
                 var activities = (JavaDictionary)obj;
-                objects = new List<Object>(activities.Values.Cast<Object>().ToList());
+                objects = new List<Java.Lang.Object>(activities.Values.Cast<Java.Lang.Object>().ToList());
             }
             else if (obj is ArrayMap)
             {
                 var activities = (ArrayMap)obj;
-                objects = new List<Object>(activities.Values().Cast<Object>().ToList());
+                objects = new List<Java.Lang.Object>(activities.Values().Cast<Java.Lang.Object>().ToList());
             }
             else if (obj is IMap)
             {
                 var activities = (IMap)activityFields.Get(activityThread);
-                objects = new List<Object>(activities.Values().Cast<Object>().ToList());
+                objects = new List<Java.Lang.Object>(activities.Values().Cast<Java.Lang.Object>().ToList());
             }
 
             if (objects != null && objects.Any())

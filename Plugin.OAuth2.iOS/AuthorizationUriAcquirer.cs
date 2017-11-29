@@ -13,10 +13,12 @@ namespace Plugin.OAuth2.Components
 
         public Task<string> GetAuthorizationUriAsync(string authorizeUri, string redirectUriRoot)
         {
-            if (ModalController != null)
+            if (CompletionSource != null)
             {
                 return Task.FromResult(default(string));
             }
+
+            CompletionSource = new TaskCompletionSource<string>();
 
             RedirectUriRoot = redirectUriRoot;
             var webViewController = new WebViewController(authorizeUri);
@@ -27,7 +29,6 @@ namespace Plugin.OAuth2.Components
             var currentController = GetCurrentViewController();
             currentController.PresentViewControllerAsync(ModalController, true);
 
-            CompletionSource = new TaskCompletionSource<string>();
             return CompletionSource.Task;
         }
 
@@ -44,6 +45,18 @@ namespace Plugin.OAuth2.Components
             }
         }
 
+        private async Task CloseModalControllerAndSetTCSResult(string result)
+        {
+            if (ModalController != null)
+            {
+                await ModalController.DismissViewControllerAsync(true);
+                ModalController = null;
+            }
+
+            CompletionSource?.SetResult(result);
+            CompletionSource = null;
+        }
+
         private UIViewController GetCurrentViewController()
         {
             var window = UIApplication.SharedApplication.Delegate.GetWindow();
@@ -55,18 +68,6 @@ namespace Plugin.OAuth2.Components
             }
 
             return output;
-        }
-
-        private async Task CloseModalControllerAndSetTCSResult(string result)
-        {
-            if (ModalController != null)
-            {
-                await ModalController.DismissViewControllerAsync(true);
-                ModalController = null;
-            }
-
-            CompletionSource?.SetResult(result);
-            CompletionSource = null;
         }
     }
 }
