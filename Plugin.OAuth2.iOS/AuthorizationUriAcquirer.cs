@@ -1,46 +1,34 @@
-﻿using System;
+﻿using Plugin.OAuth2.Common;
 using System.Threading.Tasks;
-using Plugin.OAuth2.Common;
 using UIKit;
 
 namespace Plugin.OAuth2.Components
 {
-    internal class AuthorizationUriAcquirer : IAuthorizationUriAcquirer
+    internal class AuthorizationUriAcquirer : AuthorizationUriAcquirerBase
     {
-        private string RedirectUriRoot { get; set; }
-        private TaskCompletionSource<string> CompletionSource { get; set; }
         private UINavigationController ModalController { get; set; }
 
-        public Task<string> GetAuthorizationUriAsync(string authorizeUri, string redirectUriRoot)
+        protected override Task ShowModalBrowserUI()
+        {
+            var webViewController = new WebViewController(AuthorizeUri);
+            webViewController.OnNavigating += NavigationHandler;
+            webViewController.NavigationItem.LeftBarButtonItem = new UIBarButtonItem(UIBarButtonSystemItem.Cancel, (d, e) => CancellationHandler());
+
+            ModalController = new UINavigationController(webViewController)
+            {
+                ModalPresentationStyle = UIModalPresentationStyle.FormSheet
+            };
+
+            var currentController = GetCurrentViewController();
+            return currentController.PresentViewControllerAsync(ModalController, true);
+        }
+
+        protected override async Task CloseModalBrowserUI()
         {
             if (ModalController != null)
             {
-                return Task.FromResult(default(string));
-            }
-
-            RedirectUriRoot = redirectUriRoot;
-            var webViewController = new WebViewController(authorizeUri);
-            webViewController.OnNavigating += NavigationHandler;
-            ModalController = new UINavigationController(webViewController);
-            webViewController.NavigationItem.LeftBarButtonItem = new UIBarButtonItem(UIBarButtonSystemItem.Cancel, CancelBtnHandler);
-
-            var currentController = GetCurrentViewController();
-            currentController.PresentViewControllerAsync(ModalController, true);
-
-            CompletionSource = new TaskCompletionSource<string>();
-            return CompletionSource.Task;
-        }
-
-        private void CancelBtnHandler(object sender, System.EventArgs e)
-        {
-            var task = CloseModalControllerAndSetTCSResult(null);
-        }
-
-        void NavigationHandler(string Uri)
-        {
-            if (Uri.StartsWith(RedirectUriRoot, StringComparison.InvariantCulture))
-            {
-                var task = CloseModalControllerAndSetTCSResult(Uri);
+                await ModalController.DismissViewControllerAsync(true);
+                ModalController = null;
             }
         }
 
@@ -55,18 +43,6 @@ namespace Plugin.OAuth2.Components
             }
 
             return output;
-        }
-
-        private async Task CloseModalControllerAndSetTCSResult(string result)
-        {
-            if (ModalController != null)
-            {
-                await ModalController.DismissViewControllerAsync(true);
-                ModalController = null;
-            }
-
-            CompletionSource?.SetResult(result);
-            CompletionSource = null;
         }
     }
 }

@@ -102,10 +102,6 @@
       <Project>{304b64f6-ff0e-4e1b-bee5-e51df3a4ebea}</Project>
       <Name>Plugin.OAuth2.Net46</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Plugin.OAuth2\Plugin.OAuth2.csproj">
-      <Project>{c4d264ad-afdb-49d7-ad69-c8221af69b94}</Project>
-      <Name>Plugin.OAuth2</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TestApp.Shared\TestApp.Shared.csproj">
       <Project>{81eea812-c16e-4ec7-a0b5-dc5c53ac1569}</Project>
       <Name>TestApp.Shared</Name>
