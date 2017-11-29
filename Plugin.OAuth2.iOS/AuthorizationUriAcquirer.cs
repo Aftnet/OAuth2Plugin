@@ -1,60 +1,31 @@
-﻿using System;
+﻿using Plugin.OAuth2.Common;
 using System.Threading.Tasks;
-using Plugin.OAuth2.Common;
 using UIKit;
 
 namespace Plugin.OAuth2.Components
 {
-    internal class AuthorizationUriAcquirer : IAuthorizationUriAcquirer
+    internal class AuthorizationUriAcquirer : AuthorizationUriAcquirerBase
     {
-        private string RedirectUriRoot { get; set; }
-        private TaskCompletionSource<string> CompletionSource { get; set; }
         private UINavigationController ModalController { get; set; }
 
-        public Task<string> GetAuthorizationUriAsync(string authorizeUri, string redirectUriRoot)
+        protected override Task ShowModalBrowserUI()
         {
-            if (CompletionSource != null)
-            {
-                return Task.FromResult(default(string));
-            }
-
-            CompletionSource = new TaskCompletionSource<string>();
-
-            RedirectUriRoot = redirectUriRoot;
-            var webViewController = new WebViewController(authorizeUri);
+            var webViewController = new WebViewController(AuthorizeUri);
             webViewController.OnNavigating += NavigationHandler;
             ModalController = new UINavigationController(webViewController);
-            webViewController.NavigationItem.LeftBarButtonItem = new UIBarButtonItem(UIBarButtonSystemItem.Cancel, CancelBtnHandler);
+            webViewController.NavigationItem.LeftBarButtonItem = new UIBarButtonItem(UIBarButtonSystemItem.Cancel, (d, e) => CancellationHandler());
 
             var currentController = GetCurrentViewController();
-            currentController.PresentViewControllerAsync(ModalController, true);
-
-            return CompletionSource.Task;
+            return currentController.PresentViewControllerAsync(ModalController, true);
         }
 
-        private void CancelBtnHandler(object sender, System.EventArgs e)
-        {
-            var task = CloseModalControllerAndSetTCSResult(null);
-        }
-
-        void NavigationHandler(string Uri)
-        {
-            if (Uri.StartsWith(RedirectUriRoot, StringComparison.InvariantCulture))
-            {
-                var task = CloseModalControllerAndSetTCSResult(Uri);
-            }
-        }
-
-        private async Task CloseModalControllerAndSetTCSResult(string result)
+        protected override async Task CloseModalBrowserUI()
         {
             if (ModalController != null)
             {
                 await ModalController.DismissViewControllerAsync(true);
                 ModalController = null;
             }
-
-            CompletionSource?.SetResult(result);
-            CompletionSource = null;
         }
 
         private UIViewController GetCurrentViewController()
