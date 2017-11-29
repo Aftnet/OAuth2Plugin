@@ -8,6 +8,8 @@ namespace Plugin.OAuth2.Components
 {
     internal class WebViewController : UIViewController
     {
+        private const string UserAgentString = "Mozilla/5.0 AppleWebKit/600.1.4 (KHTML, like Gecko) FxiOS/1.0 Mobile/12F69 Safari/600.1.4";
+
         public delegate void OnNavigatingDelegate(string Uri);
 
         private class NavDelegate : WKNavigationDelegate
@@ -48,7 +50,7 @@ namespace Plugin.OAuth2.Components
 
             WebView = new WKWebView(CGRect.Null, new WKWebViewConfiguration());
             WebView.NavigationDelegate = WebViewDelegate;
-            WebView.CustomUserAgent = "Mozilla/5.0 AppleWebKit/600.1.4 (KHTML, like Gecko) FxiOS/1.0 Mobile/12F69 Safari/600.1.4";
+            WebView.CustomUserAgent = UserAgentString;
         }
 
         public override void ViewDidLoad()

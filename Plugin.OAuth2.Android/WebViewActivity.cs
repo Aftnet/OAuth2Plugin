@@ -8,6 +8,8 @@ namespace Plugin.OAuth2.Components
     [Activity(Label = "WebViewActivity")]
     internal class WebViewActivity : Activity
     {
+        private const string UserAgentString = "Mozilla/5.0 (Android 4.4; Mobile; rv:41.0) Gecko/41.0 Firefox/41.0";
+
         public delegate void OnNavigatingDelegate(string Uri);
 
         private class BrowserViewClient : WebViewClient
@@ -37,6 +39,7 @@ namespace Plugin.OAuth2.Components
 
             BrowserView = new WebView(this);
             var client = new BrowserViewClient(d => OnNavigating?.Invoke(d));
+            BrowserView.Settings.UserAgentString = UserAgentString;
             BrowserView.SetWebViewClient(client);
             SetContentView(BrowserView);
 
