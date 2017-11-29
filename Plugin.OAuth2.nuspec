@@ -5,8 +5,8 @@
     <version>$version$</version>
     <authors>Alberto Fustinoni</authors>
     <owners>Alberto Fustinoni</owners>
-    <licenseUrl>https://raw.githubusercontent.com/Aftnet/OIDCBroker/master/License.txt</licenseUrl>
-    <projectUrl>https://github.com/Aftnet/OIDCBroker</projectUrl>
+    <licenseUrl>https://raw.githubusercontent.com/Aftnet/OAuth2Plugin/master/License.txt</licenseUrl>
+    <projectUrl>https://github.com/Aftnet/OAuth2Plugin</projectUrl>
     <iconUrl>https://github.com/Aftnet/OAuth2Plugin/raw/master/Icon.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Handles OAuth2 code flow to get authorization tokens from OpenID Connect providers, spawning a web browser for interactive authentication as needed.</description>
