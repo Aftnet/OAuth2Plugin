@@ -15,14 +15,22 @@ namespace Plugin.OAuth2.Components
     {
         public const string IntentStartUriKey = nameof(IntentStartUriKey);
 
+        private TaskCompletionSource<string> CompletionSource { get; set; }
+
         public Task<string> GetAuthorizationUriAsync(string authorizeUri, string redirectUriRoot)
         {
+            if (CompletionSource != null)
+            {
+                return Task.FromResult(default(string));
+            }
+
             var context = GetCurrentActivity();
             var intent = new Intent(context, typeof(WebViewActivity));
             intent.PutExtra(IntentStartUriKey, authorizeUri);
             context.StartActivity(intent);
-
-            return null;
+            
+            CompletionSource = new TaskCompletionSource<string>();
+            return CompletionSource.Task;
         }
 
         private static Activity GetCurrentActivity()
