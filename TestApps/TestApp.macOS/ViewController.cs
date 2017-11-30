@@ -7,6 +7,8 @@ namespace TestApp.macOS
 {
     public partial class ViewController : NSViewController
     {
+        private readonly Shared.Handler Handler = new Shared.Handler();
+
         public ViewController(IntPtr handle) : base(handle)
         {
         }
@@ -29,6 +31,11 @@ namespace TestApp.macOS
                 base.RepresentedObject = value;
                 // Update the view, if already loaded.
             }
+        }
+
+        partial void LogInBtnClick(NSObject sender)
+        {
+            var task = Handler.LogIn();
         }
     }
 }
