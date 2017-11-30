@@ -8,6 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		License.txt = License.txt
 		Plugin.OAuth2.nuspec = Plugin.OAuth2.nuspec
 		Readme.md = Readme.md
+		SharedAssemblyInfo.cs = SharedAssemblyInfo.cs
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.OAuth2.Common", "Plugin.OAuth2.Common\Plugin.OAuth2.Common.csproj", "{E2265C32-3ADE-49F9-AB3E-CB4A605ACFC5}"

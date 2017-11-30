@@ -47,6 +47,9 @@
     <Compile Include="..\Plugin.OAuth2.Shared\CrossOAuth2.cs">
       <Link>CrossOAuth2.cs</Link>
     </Compile>
+    <Compile Include="..\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="AuthorizationUriAcquirer.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
