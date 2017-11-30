@@ -5,8 +5,8 @@
     <version>$version$</version>
     <authors>Alberto Fustinoni</authors>
     <owners>Alberto Fustinoni</owners>
-    <licenseUrl>https://raw.githubusercontent.com/Aftnet/OIDCBroker/master/License.txt</licenseUrl>
-    <projectUrl>https://github.com/Aftnet/OIDCBroker</projectUrl>
+    <licenseUrl>https://raw.githubusercontent.com/Aftnet/OAuth2Plugin/master/License.txt</licenseUrl>
+    <projectUrl>https://github.com/Aftnet/OAuth2Plugin</projectUrl>
     <iconUrl>https://github.com/Aftnet/OAuth2Plugin/raw/master/Icon.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Handles OAuth2 code flow to get authorization tokens from OpenID Connect providers, spawning a web browser for interactive authentication as needed.</description>
@@ -21,11 +21,13 @@
     <file src="Plugin.OAuth2\bin\$configuration$\netstandard1.4\Plugin.OAuth2.*" target="lib\netstandard1.4" />
     <!--UWP-->
     <file src="Plugin.OAuth2.UWP\bin\$configuration$\Plugin.OAuth2.*" target="lib\uap10" />
-    <!--Desktop Windows-->
+    <!--Windows Desktop-->
     <file src="Plugin.OAuth2.Net46\bin\$configuration$\Plugin.OAuth2.*" target="lib\net46" />
-    <!--Xamarin.iOS-->
-    <file src="Plugin.OAuth2.iOS\bin\$configuration$\Plugin.OAuth2.*" target="lib\Xamarin.iOS10" />
-    <!--Xamarin.Android-->
+    <!--Android-->
     <file src="Plugin.OAuth2.Android\bin\$configuration$\Plugin.OAuth2.*" target="lib\MonoAndroid10" />
+    <!--iOS-->
+    <file src="Plugin.OAuth2.iOS\bin\$configuration$\Plugin.OAuth2.*" target="lib\Xamarin.iOS10" />
+    <!--macOS-->
+    <file src="Plugin.OAuth2.macOS\bin\$configuration$\Plugin.OAuth2.*" target="lib\Xamarin.Mac20" />
   </files>
 </package>
