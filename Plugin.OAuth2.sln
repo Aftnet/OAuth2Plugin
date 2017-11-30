@@ -5,10 +5,10 @@ VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6A67EFA0-0E27-496D-9894-6DC5E59B4C2D}"
 	ProjectSection(SolutionItems) = preProject
+		AssemblyInfo.cs = AssemblyInfo.cs
 		License.txt = License.txt
 		Plugin.OAuth2.nuspec = Plugin.OAuth2.nuspec
 		Readme.md = Readme.md
-		SharedAssemblyInfo.cs = SharedAssemblyInfo.cs
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.OAuth2.Common", "Plugin.OAuth2.Common\Plugin.OAuth2.Common.csproj", "{E2265C32-3ADE-49F9-AB3E-CB4A605ACFC5}"
