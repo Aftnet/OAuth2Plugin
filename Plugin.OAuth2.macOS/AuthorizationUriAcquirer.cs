@@ -5,31 +5,16 @@ using CoreGraphics;
 
 namespace Plugin.OAuth2.Components
 {
-    internal class AuthorizationUriAcquirer : AuthorizationUriAcquirerBase
+    internal class AuthorizationUriAcquirer : IAuthorizationUriAcquirer
     {
         private NSApplication Application => NSApplication.SharedApplication;
 
-        private NSWindow ModalWindow { get; set; }
-
-        protected override Task ShowModalBrowserUI()
+        public Task<string> GetAuthorizationUriAsync(string authorizeUri, string redirectUriRoot)
         {
-            ModalWindow = new NSWindow()
-            {
-                StyleMask = NSWindowStyle.Closable | NSWindowStyle.Titled
-            };
+            var controller = new ModalWindowController();
+            Application.RunModalForWindow(controller.Window);
 
-            ModalWindow.WillClose += (sender, e) => CancellationHandler();
-
-            Application.RunModalForWindow(ModalWindow);
-            return Task.CompletedTask;
-        }
-
-        protected override async Task CloseModalBrowserUI()
-        {
-            Application.AbortModal();
-
-            //Need to give the UI thread some time to recover
-            await Task.Delay(100);
+            return null;
         }
     }
 }
