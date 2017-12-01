@@ -5,7 +5,7 @@ using AppKit;
 
 namespace Plugin.OAuth2
 {
-    public partial class ModalWindow : NSWindow
+    internal partial class ModalWindow : NSWindow
     {
         public ModalWindow(IntPtr handle) : base(handle)
         {

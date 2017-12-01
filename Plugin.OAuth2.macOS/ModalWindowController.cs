@@ -6,7 +6,7 @@ using WebKit;
 
 namespace Plugin.OAuth2
 {
-    public partial class ModalWindowController : NSWindowController
+    internal partial class ModalWindowController : NSWindowController
     {
         private class WindowDelegate : NSWindowDelegate
         {
