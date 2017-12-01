@@ -69,7 +69,6 @@ namespace Plugin.OAuth2
 
             ModalDelegate = new WindowDelegate(() =>
             {
-                Result = null;
                 App.AbortModal();
             });
 
@@ -78,7 +77,7 @@ namespace Plugin.OAuth2
                 if (d.StartsWith(EndUriRoot, StringComparison.InvariantCultureIgnoreCase))
                 {
                     Result = d;
-                    App.StopModal();
+                    Window.Close();
                 }
             });
         }
