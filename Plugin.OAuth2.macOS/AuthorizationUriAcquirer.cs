@@ -7,14 +7,13 @@ namespace Plugin.OAuth2.Components
 {
     internal class AuthorizationUriAcquirer : IAuthorizationUriAcquirer
     {
-        private NSApplication Application => NSApplication.SharedApplication;
-
-        public Task<string> GetAuthorizationUriAsync(string authorizeUri, string redirectUriRoot)
+        public async Task<string> GetAuthorizationUriAsync(string authorizeUri, string redirectUriRoot)
         {
-            var controller = new ModalWindowController();
-            Application.RunModalForWindow(controller.Window);
+            var controller = new ModalWindowController(authorizeUri, redirectUriRoot);
+            NSApplication.SharedApplication.RunModalForWindow(controller.Window);
 
-            return null;
+            await Task.Delay(100);
+            return controller.Result;
         }
     }
 }
