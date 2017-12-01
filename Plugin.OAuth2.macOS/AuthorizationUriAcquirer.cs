@@ -1,18 +1,19 @@
 ﻿using Plugin.OAuth2.Common;
 using System.Threading.Tasks;
+using AppKit;
+using CoreGraphics;
 
 namespace Plugin.OAuth2.Components
 {
-    internal class AuthorizationUriAcquirer : AuthorizationUriAcquirerBase
+    internal class AuthorizationUriAcquirer : IAuthorizationUriAcquirer
     {
-        protected override Task ShowModalBrowserUI()
+        public async Task<string> GetAuthorizationUriAsync(string authorizeUri, string redirectUriRoot)
         {
-            return Task.CompletedTask;
-        }
+            var controller = new ModalWindowController(authorizeUri, redirectUriRoot);
+            NSApplication.SharedApplication.RunModalForWindow(controller.Window);
 
-        protected override Task CloseModalBrowserUI()
-        {
-            return Task.CompletedTask;
+            await Task.Delay(100);
+            return controller.Result;
         }
     }
 }

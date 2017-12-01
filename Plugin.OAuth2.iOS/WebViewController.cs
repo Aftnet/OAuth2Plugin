@@ -10,7 +10,7 @@ namespace Plugin.OAuth2.Components
     {
         private const string UserAgentString = "Mozilla/5.0 AppleWebKit/600.1.4 (KHTML, like Gecko) FxiOS/1.0 Mobile/12F69 Safari/600.1.4";
 
-        public delegate void OnNavigatingDelegate(string Uri);
+        internal delegate void OnNavigatingDelegate(string Uri);
 
         private class NavDelegate : WKNavigationDelegate
         {
@@ -28,7 +28,7 @@ namespace Plugin.OAuth2.Components
             }
         }
 
-        public event OnNavigatingDelegate OnNavigating;
+        internal event OnNavigatingDelegate OnNavigating;
 
         private readonly NavDelegate WebViewDelegate;
 
