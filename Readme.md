@@ -24,7 +24,7 @@ Main advantages:
 
 - UWP
 - Windows desktop (.NET 4.6.1+)
-- iOS
+- iOS dddd
 - Android
 
 ## Usage
