@@ -1,7 +1,6 @@
 ﻿using IdentityModel;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Text;
 
 namespace Plugin.OAuth2.Common.Components
@@ -11,7 +10,7 @@ namespace Plugin.OAuth2.Common.Components
         private class JWTStructure
         {
             [JsonProperty("exp")]
-            public long ExpiryTimestamp { get; set; }
+            public int ExpiryTimestamp { get; set; }
         }
 
         private DateTimeOffset Expiry = DateTimeOffset.MinValue;

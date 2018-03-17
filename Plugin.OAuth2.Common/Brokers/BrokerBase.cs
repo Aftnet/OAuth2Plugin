@@ -59,7 +59,7 @@ namespace Plugin.OAuth2.Common.Brokers
         protected async Task<string> DefaultGetAuthorizationCode(string authorizationEndpoint)
         {
             CurrentStateToken = GenerateAuthorizationStateToken();
-            var request = new AuthorizeRequest(authorizationEndpoint);
+            var request = new RequestUrl(authorizationEndpoint);
             var authorizeUri = request.CreateAuthorizeUrl(ClientId, OidcConstants.ResponseTypes.Code, Scope, RedirectUriRoot, CurrentStateToken);
 
             var redirectUri = await AuthUriAcquirer.GetAuthorizationUriAsync(authorizeUri, RedirectUriRoot);
