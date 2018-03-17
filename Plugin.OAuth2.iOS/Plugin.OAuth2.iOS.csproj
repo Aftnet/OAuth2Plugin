@@ -52,6 +52,9 @@
       <Name>Plugin.OAuth2.Common</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="IdentityModel" Version="3.3.1" />
+  </ItemGroup>
   <Import Project="..\Plugin.OAuth2.Shared\Plugin.OAuth2.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
