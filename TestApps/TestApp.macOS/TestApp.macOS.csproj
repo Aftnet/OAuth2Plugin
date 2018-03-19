@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -27,15 +27,19 @@
     <IncludeMonoRuntime>false</IncludeMonoRuntime>
     <UseSGen>true</UseSGen>
     <UseRefCounting>true</UseRefCounting>
-    <HttpClientHandler></HttpClientHandler>
-    <LinkMode></LinkMode>
-    <XamMacArch></XamMacArch>
+    <HttpClientHandler>
+    </HttpClientHandler>
+    <LinkMode>
+    </LinkMode>
+    <XamMacArch>
+    </XamMacArch>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release</OutputPath>
-    <DefineConstants></DefineConstants>
+    <DefineConstants>
+    </DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <EnableCodeSigning>false</EnableCodeSigning>
@@ -45,8 +49,10 @@
     <UseSGen>true</UseSGen>
     <UseRefCounting>true</UseRefCounting>
     <LinkMode>SdkOnly</LinkMode>
-    <HttpClientHandler></HttpClientHandler>
-    <XamMacArch></XamMacArch>
+    <HttpClientHandler>
+    </HttpClientHandler>
+    <XamMacArch>
+    </XamMacArch>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -86,25 +92,21 @@
     <InterfaceDefinition Include="Main.storyboard" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Plugin.OAuth2\Plugin.OAuth2.csproj">
-      <Project>{C4D264AD-AFDB-49D7-AD69-C8221AF69B94}</Project>
-      <Name>Plugin.OAuth2</Name>
-    </ProjectReference>
+    <PackageReference Include="IdentityModel" Version="3.3.1" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\..\Plugin.OAuth2.Common\Plugin.OAuth2.Common.csproj">
-      <Project>{E2265C32-3ADE-49F9-AB3E-CB4A605ACFC5}</Project>
+      <Project>{e2265c32-3ade-49f9-ab3e-cb4a605acfc5}</Project>
       <Name>Plugin.OAuth2.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Plugin.OAuth2.macOS\Plugin.OAuth2.macOS.csproj">
-      <Project>{93A94F03-05AC-4306-B2A6-194925B2BDA5}</Project>
+      <Project>{93a94f03-05ac-4306-b2a6-194925b2bda5}</Project>
       <Name>Plugin.OAuth2.macOS</Name>
     </ProjectReference>
     <ProjectReference Include="..\TestApp.Shared\TestApp.Shared.csproj">
-      <Project>{81EEA812-C16E-4EC7-A0B5-DC5C53AC1569}</Project>
+      <Project>{81eea812-c16e-4ec7-a0b5-dc5c53ac1569}</Project>
       <Name>TestApp.Shared</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="IdentityModel" Version="3.3.1" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
 </Project>
