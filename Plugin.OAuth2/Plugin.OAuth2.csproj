@@ -1,18 +1,82 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="MSBuild.Sdk.Extras/1.5.4">
 
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="rmdir %USERPROFILE%\.nuget\packages\$(PackageId) /Q /S" />
+  </Target>
+  
   <PropertyGroup>
-    <TargetFramework>netstandard1.4</TargetFramework>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <TargetFrameworks>netstandard1.4;net46;uap10.0</TargetFrameworks>
+    <AssemblyName>Plugin.FileSystem</AssemblyName>
+    <RootNamespace>$(AssemblyName)</RootNamespace>
+    <Product>$(AssemblyName) ($(TargetFramework))</Product>
+    <Version>1.0.0.0</Version>
+    <Authors>Alberto Fustinoni</Authors>
+    <PackageId>Xam.Plugin.OAuth2</PackageId>
+    <PackOnBuild>true</PackOnBuild>
+    <RepositoryUrl>https://github.com/Aftnet/OAuth2Plugin</RepositoryUrl>
+    <PackageIconUrl>https://github.com/Aftnet/OAuth2Plugin/raw/master/Icon.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/Aftnet/OAuth2Plugin</PackageProjectUrl>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/Aftnet/OAuth2Plugin/master/License.txt</PackageLicenseUrl>
+    <Owners>Alberto Fustinoni</Owners>
+    <Title>OAuth2 plugin for Xamarin and Windows</Title>
+    <Summary>OAuth2 plugin for Xamarin and Windows</Summary>
+    <Description>Handles OAuth2 code flow to get authorization tokens from OpenID Connect providers, spawning a web browser for interactive authentication as needed</Description>
+    <PackageTags>OpenID-Connect OAuth2</PackageTags>
+    <Copyright>Copyright 2018</Copyright>  
+    <NeutralLanguage>en</NeutralLanguage>
+    <LangVersion>default</LangVersion>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <DefineConstants>$(DefineConstants);</DefineConstants>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <DebugType>pdbonly</DebugType>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="$(TargetFramework.StartsWith('uap'))">
+    <TargetPlatformVersion>10.0.17134.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="..\AssemblyInfo.cs" Link="Properties\AssemblyInfo.cs" />
+    <PackageReference Include="IdentityModel" Version="3.7.1" />
+    <Compile Include="\*.cs" />
+    <Compile Include="Brokers\*.cs" />
+    <Compile Include="Components\*.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition="$(TargetFramework.StartsWith('net4'))">
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Compile Include="Net46\*.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition="$(TargetFramework.StartsWith('uap'))">
+    <Compile Include="UAP\*.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition="$(TargetFramework.StartsWith('MonoAndroid'))">
+    <Compile Include="Android\*.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition="$(TargetFramework.StartsWith('Xamarin.iOS'))">
+    <Compile Include="iOS\*.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition="$(TargetFramework.StartsWith('Xamarin.Mac'))">
+    <Compile Include="macOS\*.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition="$(TargetFramework.StartsWith('netcoreapp'))">
+    <Compile Include="NetCore\*.cs" />
   </ItemGroup>
   
-  <ItemGroup>
-    <ProjectReference Include="..\Plugin.OAuth2.Common\Plugin.OAuth2.Common.csproj" />
-  </ItemGroup>
-
-  <Import Project="..\Plugin.OAuth2.Shared\Plugin.OAuth2.Shared.projitems" Label="Shared" />
-
 </Project>
