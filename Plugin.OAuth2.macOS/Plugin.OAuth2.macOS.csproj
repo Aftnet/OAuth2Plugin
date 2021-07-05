@@ -70,7 +70,7 @@
     <InterfaceDefinition Include="ModalWindow.xib" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="IdentityModel" Version="3.3.1" />
+    <PackageReference Include="IdentityModel" Version="3.7.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Plugin.OAuth2.Common\Plugin.OAuth2.Common.csproj">
